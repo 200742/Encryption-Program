@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class ImitationGame{
+    public static void main(String[]args){
+        Scanner scan1 = new Scanner(System.in);
+        System.out.println("\nDo you want to encrypt or decrypt?");
+        String response = scan1.nextLine();
+        if(response.equals("encrypt") || response.equals("Encrypt")){
+        Cipher test = new Cipher();
+        test.Encrypt();
+       }
+        else if(response.equals("decrypt") || response.equals("Decrypt")){ 
+        Decipher test2 = new Decipher();
+        test2.Decrypt();
+       }
+       else{
+           System.out.println("You have not input a valid answer!");
+        }
+    }
+}
