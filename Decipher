@@ -1,0 +1,46 @@
+import java.util.Scanner;
+  public class Decipher{
+   public Decipher(){}
+   public void Decrypt(){
+      Scanner scan = new Scanner(System.in);
+      System.out.println("\nWhat is your encrypted text?");
+      String encryptText = scan.nextLine();
+      System.out.println("What key did you use?");
+      String key = scan.nextLine();
+      for(int i = 0; i<encryptText.length(); i++){
+          if(key.length()<encryptText.length()){
+              for(int j = 0; key.length()<encryptText.length(); j++){
+                int count = j%(key.length() + 1);
+                key = key + key.charAt(count);
+            }
+              int encryptValue = (int)encryptText.charAt(i);
+              int keyValue = (int)key.charAt(i);
+              System.out.println("Your plain text is:");
+              if(encryptValue>=keyValue){
+                  int plainValue = encryptValue-keyValue+97;
+                  char firstChar = (char)plainValue;
+                  System.out.print(firstChar);
+                }
+              else{
+                  int plainValue = (encryptValue+26)-keyValue+97;
+                  char firstChar = (char)plainValue;
+                  System.out.print(firstChar);
+            }
+            }
+          else{
+              int encryptValue = (int)encryptText.charAt(i);
+              int keyValue = (int)key.charAt(i);
+              if(encryptValue>=keyValue){
+                  int plainValue = encryptValue-keyValue+97;
+                  char firstChar = (char)plainValue;
+                  System.out.print(firstChar);
+                }
+              else{
+                  int plainValue = (encryptValue+26)-keyValue+97;
+                  char firstChar = (char)plainValue;
+                  System.out.print(firstChar);
+            }
+        }
+      }
+   }
+}
