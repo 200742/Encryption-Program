@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class Cipher{
+    public Cipher(){}
+    public void Encrypt(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("What text do you want to encrypt?");
+        String str= scan.nextLine();
+        System.out.println("What do you want your key to be?");
+        String key = scan.nextLine();
+        System.out.println("Your encrypted text is:");
+        for(int i = 0; i<str.length(); i++){
+         if(str.length() <= key.length()){
+            int stringValue = (int)str.charAt(i) - 96;
+            int keyValue = (int)key.charAt(i)-96;
+            int totalValue = stringValue + keyValue - 1;
+            if(totalValue == 26){
+                totalValue = totalValue + 96;
+            }
+            else{
+                totalValue = (totalValue%26)+96;
+            }
+            char finalChar = (char)totalValue;
+            System.out.print(finalChar);
+         }
+         else{
+            for(int j = 0; key.length()<str.length(); j++){
+                int count = j%(key.length() + 1);
+                key = key + key.charAt(count);
+            }
+            int stringValue = (int)str.charAt(i) - 96;
+            int keyValue = (int)key.charAt(i)-96;
+            int totalValue = stringValue + keyValue - 1;
+            if(totalValue == 26){
+                totalValue = totalValue + 96;
+            }
+            else{
+                totalValue = (totalValue%26)+96;
+            }
+            char finalChar = (char)totalValue;
+            System.out.print(finalChar);
+         }
+       }
+    }
+}
